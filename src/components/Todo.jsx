@@ -34,7 +34,7 @@ export default function Todo({ todo }) {
         )}
       </div>
 
-      <div className="select-none flex-1 line-through">{text}</div>
+      <div className={`select-none flex-1 ${completed && "line-through"}`}>{text}</div>
 
       <div onClick={() => handelColor(id, "green")} className={`flex-shrink-0 h-4 w-4 rounded-full border-2 ml-auto cursor-pointer border-green-500 hover:bg-green-500 ${color === 'green' && "bg-green-500"}`}></div>
       <div onClick={() => handelColor(id, "yellow")} className={`flex-shrink-0 h-4 w-4 rounded-full border-2 ml-auto cursor-pointer border-yellow-500 hover:bg-yellow-500 ${color === 'yellow' && "bg-yellow-500"}`}></div>
