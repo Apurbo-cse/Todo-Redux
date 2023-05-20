@@ -1,6 +1,6 @@
 
 import { initialState } from "./initialState";
-import { ADDED } from "./actionType";
+import { ADDED, TOGGLED } from "./actionType";
 
 function nextTodoId = (todos) => {
     const maxId = todos.reduce((maxId, todo) => Math.max(todo.id, maxId), -1);
@@ -17,6 +17,16 @@ const reducer = (state = initialState, action) => {
                     id: nextTodoId(state)
                 }
             ]
+        case TOGGLED:
+            return state.map(todo => {
+                if(todo.id !== action.payload){
+                    return todo
+                }
+                 return {
+                        ...todo,
+                        completed: !completed
+                 }
+            })
     
         default:
             break;
