@@ -2,7 +2,7 @@
 import { initialState } from "./initialState";
 import { ADDED, CLEAR, COLOR, COMPLETED, DELETED, TOGGLED } from "./actionType";
 
-function nextTodoId = (todos) => {
+const nextTodoId = (todos) => {
     const maxId = todos.reduce((maxId, todo) => Math.max(todo.id, maxId), -1);
     return maxId + 1;
 }
@@ -61,3 +61,5 @@ const reducer = (state = initialState, action) => {
     }
 
 }
+
+export default reducer;
