@@ -1,6 +1,6 @@
 
 import { initialState } from "./initialState";
-import { ADDED, TOGGLED } from "./actionType";
+import { ADDED, COLOR, TOGGLED } from "./actionType";
 
 function nextTodoId = (todos) => {
     const maxId = todos.reduce((maxId, todo) => Math.max(todo.id, maxId), -1);
@@ -17,6 +17,7 @@ const reducer = (state = initialState, action) => {
                     id: nextTodoId(state)
                 }
             ]
+
         case TOGGLED:
             return state.map(todo => {
                 if(todo.id !== action.payload){
@@ -26,6 +27,18 @@ const reducer = (state = initialState, action) => {
                         ...todo,
                         completed: !completed
                  }
+            })
+
+        case COLOR:
+            const { todoId, color} = action.payload;
+            return state.map(todo => {
+                if(todo.id !== todoId){
+                    return todo;
+                }
+                return {
+                    ...todo,
+                    color: color
+                }
             })
     
         default:
