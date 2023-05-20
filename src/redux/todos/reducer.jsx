@@ -1,6 +1,6 @@
 
 import { initialState } from "./initialState";
-import { ADDED, COLOR, DELETED, TOGGLED } from "./actionType";
+import { ADDED, CLEAR, COLOR, COMPLETED, DELETED, TOGGLED } from "./actionType";
 
 function nextTodoId = (todos) => {
     const maxId = todos.reduce((maxId, todo) => Math.max(todo.id, maxId), -1);
@@ -42,7 +42,19 @@ const reducer = (state = initialState, action) => {
             })
             
         case DELETED:
-            return state.filter(todo => todo.id !== todoId)
+            return state.filter(todo => todo.id !== action.payload);
+        
+        case COMPLETED:
+            return state.map(todo => {
+                return {
+                    ...todo,
+                    completed: true
+                }
+            })
+        
+        case CLEAR:
+            return state.filter(todo => todo.completed);
+
     
         default:
             break;
