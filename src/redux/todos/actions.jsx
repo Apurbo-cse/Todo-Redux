@@ -14,7 +14,7 @@ export const toggled = (todoId) => {
     }
 }
 
-export const color = (todoId, color) => {
+export const colorChange = (todoId, color) => {
     return {
         type: COLOR,
         payload : {
