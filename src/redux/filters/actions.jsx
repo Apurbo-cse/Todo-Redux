@@ -9,7 +9,7 @@ export const color = (color, type) => {
     }
 }
 
-export const status = (status) => {
+export const statusChange = (status) => {
     return {
         type: STATUS,
         payload : status
