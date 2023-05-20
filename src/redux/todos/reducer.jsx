@@ -1,6 +1,6 @@
 
 import { initialState } from "./initialState";
-import { ADDED, COLOR, TOGGLED } from "./actionType";
+import { ADDED, COLOR, DELETED, TOGGLED } from "./actionType";
 
 function nextTodoId = (todos) => {
     const maxId = todos.reduce((maxId, todo) => Math.max(todo.id, maxId), -1);
@@ -40,6 +40,9 @@ const reducer = (state = initialState, action) => {
                     color: color
                 }
             })
+            
+        case DELETED:
+            return state.filter(todo => todo.id !== todoId)
     
         default:
             break;
