@@ -1,4 +1,4 @@
-import { ADDED, COLOR, COMPLETED, DELETED, TOGGLED } from "./actionType"
+import { ADDED, CLEAR, COLOR, COMPLETED, DELETED, TOGGLED } from "./actionType"
 
 export const added = (todoText) => {
     return {
@@ -34,5 +34,11 @@ export const deleted = (todoId) => {
 export const completed = () => {
     return {
         type: COMPLETED
+    }
+}
+
+export const clear = () => {
+    return {
+        type: CLEAR
     }
 }
