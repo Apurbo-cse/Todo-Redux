@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import cancelImage from "../assets/images/cancel.png";
-import { toggled, colorChange } from "../redux/todos/actions";
+import { toggled, colorChange, deleted } from "../redux/todos/actions";
 
 export default function Todo({ todo }) {
     const dispatch = useDispatch();
@@ -10,6 +10,9 @@ export default function Todo({ todo }) {
     }
     const handelColor = (todoId, color) => {
         dispatch(colorChange(todoId, color));
+    }
+    const handelDelete = (todoId) =>{
+        dispatch(deleted(todoId))
     }
 
   return (
@@ -41,6 +44,7 @@ export default function Todo({ todo }) {
         src={cancelImage}
         className="flex-shrink-0 w-4 h-4 ml-2 cursor-pointer"
         alt="Cancel"
+        onClick={()=> handelDelete(id)}
       />
     </div>
   );
