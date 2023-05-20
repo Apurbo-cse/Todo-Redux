@@ -12,8 +12,6 @@ export const color = (color, type) => {
 export const status = (status) => {
     return {
         type: STATUS,
-        payload : {
-            status,
-        }
+        payload : status
     }
 }
