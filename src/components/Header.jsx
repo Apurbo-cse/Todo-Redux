@@ -3,7 +3,8 @@ import tickImage from "../assets/images/double-tick.png";
 import noteImage from "../assets/images/notes.png";
 import plusImage from "../assets/images/plus.png";
 import { useDispatch } from "react-redux";
-import { added, clear, completed } from "../redux/todos/actions";
+import { clear, completed } from "../redux/todos/actions";
+import addTodo from "../redux/todos/thunk/addTodo";
 
 export default function Header() {
     const dispatch = useDispatch();
@@ -15,7 +16,7 @@ export default function Header() {
 
     const handelSubmit = (e) => {
         e.preventDefault();
-        dispatch(added(input));
+        dispatch(addTodo(input));
         setInput("");
     }
 
