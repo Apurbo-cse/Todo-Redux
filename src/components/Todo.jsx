@@ -1,7 +1,13 @@
+import { useDispatch } from "react-redux";
 import cancelImage from "../assets/images/cancel.png";
+import { toggled } from "../redux/todos/actions";
 
 export default function Todo({ todo }) {
+    const dispatch = useDispatch();
   const { text, id, color, completed } = todo;
+  const handelChange = (todoId) => {
+    dispatch(toggled(todoId));
+  }
 
   return (
     <div className="flex justify-start items-center p-2 hover:bg-gray-100 hover:transition-all space-x-4 border-b border-gray-400/20 last:border-0">
@@ -9,6 +15,7 @@ export default function Todo({ todo }) {
         <input
           type="checkbox"
           checked={completed}
+          onChange={()=> handelChange(id)}
           className="opacity-0 absolute rounded-full"
         />
         {completed && (
